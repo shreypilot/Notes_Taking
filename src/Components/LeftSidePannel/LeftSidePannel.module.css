@@ -1,0 +1,98 @@
+.leftSidePannel {
+  background: #fff;
+  width: 23vw;
+  height: 98.3vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5% 1.5% 1.5% 1.5%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+}
+h1 {
+  font-family: Roboto;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 37px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  padding: 50px 0px 0px 46px;
+}
+
+.createNotesGroup {
+  border-radius: 50%;
+  min-width: 61px;
+  min-height: 61px;
+
+  letter-spacing: 0.03013rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #16008b;
+  position: absolute;
+  top: 830px;
+  left: 350px;
+
+  padding: 4.5% 4.5% 4.5% 4.5%;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 1.6875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 97.688%;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notesGroupSlected {
+  padding: 3% 0% 0% 0%;
+  width: 21vw;
+  height: 2.375rem;
+  display: flex;
+  justify-self: start;
+}
+
+@media (max-width: 1600px) {
+  .createNotesGroup {
+    top: 750px;
+    left: 300px;
+  }
+}
+
+@media (max-width: 1500px) {
+  .createNotesGroup {
+    top: 750px;
+    left: 260px;
+  }
+}
+
+/* media query mobile view */
+@media (max-width: 600px) {
+  .leftSidePannel {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  .createNotesGroup {
+    top: 830px;
+    left: 330px;
+  }
+
+  .notesGroupSlected {
+    padding: 5% 3% 3% 3%;
+
+    width: 100vw;
+    height: 2.375rem;
+  }
+
+  .notesGroupSlected:active {
+    width: 97vw;
+  }
+}
