@@ -3,6 +3,19 @@ body {
   
 }
 
+.Note{ 
+ margin-bottom: 21px;
+ background-color: #fff;
+ margin-bottom: 5px;
+ padding: 10px;
+ border-radius: 0.5rem;
+}
+.DateTime{
+  display: flex;
+justify-content: right;
+gap: 8px;
+}
+
 .NotesName {
   color: #fff;
   font-family: Roboto;

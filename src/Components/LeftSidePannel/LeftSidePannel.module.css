@@ -51,10 +51,11 @@ h1 {
 
 .notesGroupSlected {
   padding: 3% 0% 0% 0%;
-  width: 21vw;
+  width: 22vw;
   height: 2.375rem;
   display: flex;
   justify-self: start;
+  cursor: pointer;
 }
 
 @media (max-width: 1600px) {

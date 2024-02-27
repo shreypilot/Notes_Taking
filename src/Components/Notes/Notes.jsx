@@ -1,11 +1,11 @@
 import StyleNotes from "./Notes.module.css";
 import { useState } from "react";
 
-const Notes = ({userIdClicked}) => {
+const Notes = ({ userIdClicked }) => {
   const [saveNotes, setSaveNotes] = useState(false);
   const storedDataString = localStorage.getItem("groupNamesData");
   const storedData = JSON.parse(storedDataString) || [];
-  const [myNotes, setMyNotes] = useState({
+    const [myNotes, setMyNotes] = useState({
     id: [],
     notes: [],
     time: [],
@@ -14,7 +14,6 @@ const Notes = ({userIdClicked}) => {
 
   const groupName = storedData[userIdClicked - 1].groupName;
   const color = storedData[userIdClicked - 1].color;
-
   const imageText = groupName.length;
   const NotesImage = {
     backgroundColor: `${color}`,
@@ -63,8 +62,8 @@ const Notes = ({userIdClicked}) => {
     });
     setSaveNotes(true);
   };
-  const resetTextarea = () => {
-    setMyNotes({ ...myNotes, notes: '' }); 
+    const resetTextarea = () => {
+    setMyNotes({ ...myNotes, notes: "" });
   };
   const saveMyNotes = () => {
     const existinggroupNamesData = localStorage.getItem("myNotesSave");
@@ -79,69 +78,75 @@ const Notes = ({userIdClicked}) => {
 
   const reterivingMyNotes = () => {
     const existinggroupNamesData = localStorage.getItem("myNotesSave");
-  
+
     if (existinggroupNamesData) {
       const existingNotes = JSON.parse(existinggroupNamesData);
-  
-      return( existingNotes.map((note, index) => (
-       (userIdClicked === note.id) ?(
-        <div style={{ display: "flex" , justifyContent: "space-between",marginBottom: "21px"}} key={index}>
-          <div>
-            <div>
-            <div className={StyleNotes.time}>{note.time}</div>
-            <div className={StyleNotes.date}>{note.date}</div>
+
+      return existingNotes.map((note, index) =>
+        userIdClicked === note.id ? (
+          <div className={StyleNotes.Note} key={index}>
+            <div
+              className={StyleNotes.notes}
+              style={{ width: "50vw", contentWrap: "break-word" }}
+            >
+              {" "}
+              {note.notes}
+            </div>
+            <div className={StyleNotes.DateTime}>
+              <div className={StyleNotes.date}>{note.date}</div>
+              <div className={StyleNotes.time}>{note.time}</div>
             </div>
           </div>
-         <div className={StyleNotes.notes} style={{width: "50vw",contentWrap: "break-word"}}> {note.notes}</div>
-         <br/><br/><br/>
-        </div>
-      ):(
-        null
-      ))));
+        ) : null
+      );
     } else {
       console.log("Data not found in localStorage");
     }
   };
-  
+
   const handleKEnterKey = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault(); 
+    if (e.key === "Enter") {
+      e.preventDefault();
       saveMyNotes();
     }
   };
-
 
   return (
     <>
       {userIdClicked > 0 ? (
         <div className={StyleNotes.NotesGroupNotes}>
           <div className={StyleNotes.NotesGroupHeading}>
-            &nbsp; &nbsp; &nbsp;<span className={StyleNotes.backButton} onClick={() => window.location.reload()}><img src="assets/BackButton.svg" alt="BackButton" /> &nbsp;</span>
+            &nbsp; &nbsp; &nbsp;
+            <span
+              className={StyleNotes.backButton}
+              onClick={() => window.location.reload()}
+            >
+              <img src="assets/BackButton.svg" alt="BackButton" /> &nbsp;
+            </span>
             <div style={NotesImage}>
               {groupName[0]}
               {groupName[imageText - 1]}
             </div>
             <div className={StyleNotes.NotesName}>{groupName}</div>
           </div>
-          <div className={StyleNotes.NotesContent}>
-            {  reterivingMyNotes()}
-          </div>
+          <div className={StyleNotes.NotesContent}>{reterivingMyNotes()}</div>
           <div className={StyleNotes.NotesEnter}>
-            <textarea
-              type="text"
-              placeholder="Enter your text here..........."
-              className={StyleNotes.NotesInput}
-              onChange={(e) => myNotesFunction(e)}
-              value={myNotes.notes}
-              onKeyPress={handleKEnterKey}
-            />
-            <img
-              src="assets/EnterArrow.svg"
-              alt="Enter"
-              className={StyleNotes.NotesInputButton}
-              onClick={saveMyNotes}
-            />
-          </div>
+          <textarea
+        type="text"
+        placeholder="Enter your text here..........."
+        className={StyleNotes.NotesInput}
+        onChange={(e) => myNotesFunction(e)}
+                value={myNotes.notes}
+onKeyPress={handleKEnterKey}
+      />
+
+              <img
+          src="assets/EnterArrow.svg"
+          alt="Enter"
+          className={StyleNotes.NotesInputButton}
+          onClick={saveMyNotes}
+        />
+                </div>
         </div>
       ) : (
         ("no notes", console.log("no notes"))
